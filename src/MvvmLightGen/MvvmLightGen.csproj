@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <Configurations>Debug;Release;MvvmLightGen_PureCodeGeneration</Configurations>
+    <RootNamespace>MvvmLightGen</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Title>MvvmLightGen</Title>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageTags>mvvm mvvmgen wpf uwp winui xamarin maui uno xaml generator</PackageTags>
+    <Product>MvvmLightGen</Product>
+    <PackageProjectUrl>https://github.com/thomasclaudiushuber/mvvmgen</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <RepositoryUrl>https://github.com/thomasclaudiushuber/mvvmgen</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Language>en-US</Language>
+    <PackageIcon>packageIcon.png</PackageIcon>
+    <Version>1.2.0</Version>
+    <Authors>BowieD, Thomas Claudius Huber</Authors>
+    <Description>MvvmLightGen is a lightweight, modern MVVM library for XAML applications. It is built with a strong focus on C# source generators to help you to efficiently apply the Model-View-ViewModel pattern in your WPF, WinUI, Uno, Xamarin.Forms and .NET MAUI apps. MvvmLightGen is your friend who writes all the boilerplate for you.</Description>
+    <PackageId>MvvmLightGen</PackageId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' != 'MvvmLightGen_PureCodeGeneration'">
+    <PackageId>MvvmLightGen</PackageId>
+    <IncludeBuildOutput>true</IncludeBuildOutput>
+    <Description>MvvmLightGen is a lightweight, modern MVVM library for XAML applications. It is built with a strong focus on C# source generators to help you to efficiently apply the Model-View-ViewModel pattern in your WPF, WinUI, Uno, Xamarin.Forms and .NET MAUI apps. MvvmLightGen is your friend who writes all the boilerplate for you.</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'MvvmLightGen_PureCodeGeneration'">
+    <PackageId>MvvmLightGen.PureCodeGeneration</PackageId>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <DevelopmentDependency>true</DevelopmentDependency>
+    <Description>MvvmLightGen.PureCodeGeneration is a lightweight, modern MVVM library for XAML applications. This package is a special version of the MvvmLightGen NuGet package. It has the same functionality, but it generates not only your ViewModels, but also the full MvvmLightGen library. This means that you have zero runtime dependencies with this package. As the package name says, it's pure code generation.</Description>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(Configuration)' != 'MvvmLightGen_PureCodeGeneration'">
+    <None Include="..\MvvmLightGen.SourceGenerators\bin\$(Configuration)\netstandard2.0\MvvmLightGen.SourceGenerators.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Remove="_._" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'MvvmLightGen_PureCodeGeneration'">
+    <None Include="..\MvvmLightGen.SourceGenerators\bin\$(Configuration)\netstandard2.0\MvvmLightGen.PureCodeGeneration.SourceGenerators.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+      <None Include="_._" Pack="true" PackagePath="lib/netstandard2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="packageIcon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
+  </ItemGroup>
+
+</Project>

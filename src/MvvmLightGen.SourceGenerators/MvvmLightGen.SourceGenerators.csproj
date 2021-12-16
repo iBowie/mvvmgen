@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Configurations>Debug;Release;MvvmLightGen_PureCodeGeneration</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' != 'MvvmLightGen_PureCodeGeneration'">
+    <AssemblyName>MvvmLightGen.SourceGenerators</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'MvvmLightGen_PureCodeGeneration'">
+    <AssemblyName>MvvmLightGen.PureCodeGeneration.SourceGenerators</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'MvvmLightGen_PureCodeGeneration'">
+    <EmbeddedResource Include="..\MvvmLightGen\Attributes\CommandAttribute.cs" Link="MvvmLightGenLib\Attributes\CommandAttribute.cs" />
+    <EmbeddedResource Include="..\MvvmLightGen\Attributes\CommandInvalidateAttribute.cs" Link="MvvmLightGenLib\Attributes\CommandInvalidateAttribute.cs" />
+    <EmbeddedResource Include="..\MvvmLightGen\Attributes\InjectAttribute.cs" Link="MvvmLightGenLib\Attributes\InjectAttribute.cs" />
+    <EmbeddedResource Include="..\MvvmLightGen\Attributes\PropertyAttribute.cs" Link="MvvmLightGenLib\Attributes\PropertyAttribute.cs" />
+    <EmbeddedResource Include="..\MvvmLightGen\Attributes\PropertyCallMethodAttribute.cs" Link="MvvmLightGenLib\Attributes\PropertyCallMethodAttribute.cs" />
+    <EmbeddedResource Include="..\MvvmLightGen\Attributes\PropertyInvalidateAttribute.cs" Link="MvvmLightGenLib\Attributes\PropertyInvalidateAttribute.cs" />
+    <EmbeddedResource Include="..\MvvmLightGen\Attributes\PropertyPublishEventAttribute.cs" Link="MvvmLightGenLib\Attributes\PropertyPublishEventAttribute.cs" />
+    <EmbeddedResource Include="..\MvvmLightGen\Attributes\ViewModelAttribute.cs" Link="MvvmLightGenLib\Attributes\ViewModelAttribute.cs" />
+    <EmbeddedResource Include="..\MvvmLightGen\Attributes\ViewModelGenerateFactoryAttribute.cs" Link="MvvmLightGenLib\Attributes\ViewModelGenerateFactoryAttribute.cs" />
+    <EmbeddedResource Include="..\MvvmLightGen\Commands\DelegateCommand.cs" Link="MvvmLightGenLib\Commands\DelegateCommand.cs" />
+    <EmbeddedResource Include="..\MvvmLightGen\Events\EventAggregator.cs" Link="MvvmLightGenLib\Events\EventAggregator.cs" />
+    <EmbeddedResource Include="..\MvvmLightGen\Events\IEventAggregator.cs" Link="MvvmLightGenLib\Events\IEventAggregator.cs" />
+    <EmbeddedResource Include="..\MvvmLightGen\Events\IEventSubscriber.cs" Link="MvvmLightGenLib\Events\IEventSubscriber.cs" />
+    <EmbeddedResource Include="..\MvvmLightGen\ViewModels\IViewModelFactory.cs" Link="MvvmLightGenLib\ViewModels\IViewModelFactory.cs" />
+    <EmbeddedResource Include="..\MvvmLightGen\ViewModels\ViewModelBase.cs" Link="MvvmLightGenLib\ViewModels\ViewModelBase.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.9.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.2" PrivateAssets="all" />
+    <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
+  </ItemGroup>
+
+</Project>
