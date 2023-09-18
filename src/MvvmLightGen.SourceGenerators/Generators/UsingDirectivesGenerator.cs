@@ -10,8 +10,9 @@ namespace MvvmLightGen.Generators
     internal static class UsingDirectivesGenerator
     {
         internal static void GenerateUsingDirectives(this ViewModelBuilder vmBuilder)
-        {
-            vmBuilder.AppendLine("using GalaSoft.MvvmLight;");
+		{
+			vmBuilder.AppendLine("#nullable enable");
+			vmBuilder.AppendLine("using GalaSoft.MvvmLight;");
             vmBuilder.AppendLine("using GalaSoft.MvvmLight.Command;");
             vmBuilder.AppendLine("using MvvmLightGen.Events;");
         }
